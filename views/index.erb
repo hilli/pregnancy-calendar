@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Pregnancy Calendar</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/redmond/jquery-ui.css" />
+      <link rel="stylesheet" type="text/css" href="/style.css" />
+    </head>
+<body>
+  <header id="page_header">
+    <h1>The Pregnancy Calendar</h1>
+  </header>
+
+  <section id="what_is_this">
+    The Pregnancy Calendar helps you to follow your pregnancy in <span>your own</> calendar.
+  </section>
+<a href="http://www.google.com/calendar/render?cid=<%= CGI::escape(url('/ical/2011/02/18/28/10')) %>"
+   target="_blank"><img src="http://www.google.com/calendar/images/ext/gc_button6.gif" border=0></a>
+
+</body>
+</html>

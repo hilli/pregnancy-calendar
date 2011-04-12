@@ -1,0 +1,13 @@
+body {
+    width: 960px;
+    margin: 15px auto;
+    font-family: Arial, "MS Trebuchet", sans-serif;
+}
+
+p {
+    margin: 0 0 20px 0;
+}
+
+header #page_header {
+    font-family: Tangerine, helvetica;
+}
