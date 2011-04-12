@@ -8,6 +8,7 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js"></script>
       <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/redmond/jquery-ui.css" />
       <link rel="stylesheet" type="text/css" href="/style.css" />
+      <script src="/pregnancy-calendar.js"></script>
     </head>
 <body>
   <header id="page_header">
@@ -15,8 +16,36 @@
   </header>
 
   <section id="what_is_this">
-    The Pregnancy Calendar helps you to follow your pregnancy in <span>your own</> calendar.
+    The Pregnancy Calendar helps you to follow your pregnancy in <span class="bolder">your own</span> calendar.
+    Just enter the following details to let a calendar be generated for you:<br/>
   </section>
+  <section id="details">
+    <form method="post">
+      <fieldset id="period_infomation">
+        <legend>Information about your last <span class="bolder">full</span> menstrual period</legend>
+            <div type="text" id="datepicker"></div>
+
+            <label for="day">Day:</label>
+            <input type="text" autofocus name="day" id="name" size="2" placeholder="<%= Time.now.day %>"/>
+
+            <label for="month">Month:</label>
+            <input type="text" name="month" id="month" size="2" placeholder="<%= Time.now.month %>"/>
+
+            <label for="year">Year:</label>
+            <input type="text" name="year" id="year" size="4" placeholder="<%= Time.now.year %>"/>
+      </fieldset>
+      <fieldset id="pregnancy_information">
+        <legend>Optional information</legend>
+            <label for="days_in_cycle" title="Somewhere between 22 and 45 days">Days in your menstrual cycle</label>
+            <div type="text" id="days_in_cycle"></div>
+
+
+             <input type="range" min="22" max="45" value="28" size="2" onchange="showRangeValue(this.value, 'rangeDisplay')"/>
+                <span id="rangeDisplay" onload="showIfSupported('rangeDisplay');">28</span>
+      </fieldset>
+    </form>
+  </section>
+
 <a href="http://www.google.com/calendar/render?cid=<%= CGI::escape(url('/ical/2011/02/18/28/10')) %>"
    target="_blank"><img src="http://www.google.com/calendar/images/ext/gc_button6.gif" border=0></a>
 

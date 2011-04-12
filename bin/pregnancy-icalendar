@@ -1,7 +1,9 @@
+#!/usr/bin/env ruby
+
 require File.dirname(__FILE__) + "/../lib/pregnancy-calendar"
 
 p = PregnancyCalendar.new Date.new(2011,2,18)
 p.days_in_cycle = 28
-p.lutheal = 14
+p.luteal = 14
 
 puts p.create_ical

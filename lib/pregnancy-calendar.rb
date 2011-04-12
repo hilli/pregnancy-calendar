@@ -4,10 +4,12 @@
 # Inspired by: http://www.baby.dk/Information/Terminsberegner.aspx
 # last_period_first_date: The date for the last periods start
 # days_in_cycle: 28 (22-45)
-# lutheal: Antal dage fra du har haft ægløsning til du får din menstruation (Default 14, 9-16)
+# luteal: http://en.wikipedia.org/wiki/Luteal_phase Antal dage fra du har haft ægløsning til du får din menstruation (Default 14, 9-16)
 class PregnancyCalendar
 
-  # Notes: http://www.babycentre.co.uk/pregnancy/antenatalhealth/testsandcare/calculateduedateexpert/
+  # Notes:
+  #   http://www.babycentre.co.uk/pregnancy/antenatalhealth/testsandcare/calculateduedateexpert/
+  #   http://icalendar.rubyforge.org/
 
   require "icalendar"
   require "date"
@@ -15,19 +17,19 @@ class PregnancyCalendar
   include Icalendar
 
 
-  attr_accessor :last_menstrual_period_first_date, :days_in_cycle, :lutheal
+  attr_accessor :last_menstrual_period_first_date, :days_in_cycle, :luteal
   attr_reader :cal
   EXPECTANCY = 38 # weeks
 
   def initialize(last_menstual_period_first_date)
     @cal = Calendar.new
     @last_menstrual_period_first_date = last_menstual_period_first_date
-    @lutheal = 14
+    @luteal = 14
     @days_in_cycle = 28
   end
 
   def create_ical
-    conception_date = @last_menstrual_period_first_date + @days_in_cycle - @lutheal
+    conception_date = @last_menstrual_period_first_date + @days_in_cycle - @luteal
     due_date = conception_date + (EXPECTANCY * 7)
     num_day = 0
     (last_menstrual_period_first_date..(due_date+14)).each do |d|
@@ -35,7 +37,7 @@ class PregnancyCalendar
         dtstart     d
         dtend       d+1
         summary     "Week #{num_day.divmod(7)[0]}+#{num_day.remainder(7)}"
-        description "Birth in #{(due_date-d).to_i} days\n"
+        description "Birth in #{(due_date-d).to_i} days"
       end
       num_day += 1
     end
