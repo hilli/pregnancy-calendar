@@ -33,11 +33,13 @@ class PregnancyCalendar
     due_date = conception_date + (EXPECTANCY * 7)
     num_day = 0
     (last_menstrual_period_first_date..(due_date+14)).each do |d|
+      week = num_day.divmod(7)[0]
       @cal.event do
         dtstart     d
         dtend       d+1
-        summary     "Week #{num_day.divmod(7)[0]}+#{num_day.remainder(7)}"
+        summary     "Week #{week}+#{num_day.remainder(7)}"
         description "Birth in #{(due_date-d).to_i} days"
+        url         "http://www.babycentre.co.uk/stages/01#{sprintf("%02d",week)}/"
       end
       num_day += 1
     end
