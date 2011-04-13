@@ -17,13 +17,13 @@
 
   <section id="what_is_this">
     The Pregnancy Calendar helps you to follow your pregnancy in <span class="bolder">your own</span> calendar.
-    Just enter the following details to let a calendar be generated for you:<br/>
   </section>
   <section id="details">
-    <form id="form" method="get" action="<%= url('/post') %>">
+    Just enter the following details to let a calendar be generated for you:<br/>
+    <form id="form">
       <fieldset id="period_infomation">
         <legend>Information about your last <span class="bolder">full</span> menstrual period</legend>
-            <label for="datepicker">First day of period:</label>
+            <label for="datepicker">First day of period: <span id="dateDisplay"></span></label>
             <div id="datepicker"></div>
       </fieldset>
       <fieldset id="pregnancy_information">
@@ -31,13 +31,15 @@
             <label for="days_in_cycle" title="Somewhere between 22 and 45 days">Days in your menstrual cycle: <span id="rangeDisplay">28</span></label>
             <div id="days_in_cycle"></div> <br/>
             <label for="luteal_phase" title="The number of day from ovulation to the beginning of a new period">Length of luteal phase: <span id="lutealDisplay">14</span></label>
-              <div id="luteal_phase"></div>
+            <div id="luteal_phase"></div>
       </fieldset>
-      <input type="submit" name="Submit" value="Give me a calendar!"/>
+      <input type="submit" name="submit" value="Give me a calendar!"/>
     </form>
+   </section>
+   <section id="results">
     <div id="result">
 
-      <a href="http://www.google.com/calendar/render?cid=<%= CGI::escape(url('/ical/2011/02/18/28/10')) %>"
+      <a id="gcal" href="#"
          target="_blank"><img src="http://www.google.com/calendar/images/ext/gc_button6.gif" border=0></a>
     </div>
   </section>

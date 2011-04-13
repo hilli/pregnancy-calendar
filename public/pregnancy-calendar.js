@@ -1,25 +1,14 @@
-function hasRangeSupport() {
-    var element = document.createElement('input');
-    element.setAttribute("type","range");
-    return (element.type !== "text");
-}
-
-function showIfSupported (displaytag) {
-    if(!hasRangeSupport()) {
-        document.getElementById(displaytag).innerHTML = ""
-    }
-}
-
-function showRangeValue(newValue, displaytag) {
-    if(hasRangeSupport()) {
-	    document.getElementById(displaytag).innerHTML=newValue;
-    } else {
-        document.getElementById(displaytag).innerHTML = "";
-    }
-}
-
 $(document).ready(function() {
-    $("#datepicker").datepicker();
+    $("#results").hide();
+
+    $("#datepicker").datepicker({
+        firstDay: 1,
+        showAnim: 'fold',
+        dateFormat: "yy-mm-dd",
+        onSelect: function(dateText, ui) {
+            document.getElementById("dateDisplay").innerHTML = dateText;
+        }
+    });
 
     $("#days_in_cycle").slider({
         value: 28,
@@ -39,9 +28,17 @@ $(document).ready(function() {
         }
     });
 
-    $("form").submit(function() {
-            dato = $("#datepicker").value;
-            luteal_period = $("#luteal_phase").value;
-            $.post("/post", { date: dato, luteal: luteal_period  })
+    $("#form").submit(function(e) {
+            e.preventDefault();
+            dato = $("#datepicker").datepicker("getDate");
+            days_in_cycle = $("#days_in_cycle").slider("value");
+            luteal_period = $("#luteal_phase").slider("value");
+            url = location.href + "ical/" + dato.getFullYear() + "/" + (dato.getMonth()+1) + "/" + dato.getDate() + "/" + days_in_cycle + "/" + luteal_period;
+            //document.getElementById("#result").innerHTML = "<a href='" + url + "'>Download iCal file</a>";
+            $("#gcal").href = "http://www.google.com/calendar/render?cid=" + escape(url);  // .setAttribute("href", "http://www.google.com/calendar/render?cid=" + escape(url));
+            $("#details").slideUp();
+            $("#results").fadeIn();
+            console.log("Location: " + url);
+            return false; // stay on the page
             });
 });

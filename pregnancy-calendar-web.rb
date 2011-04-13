@@ -32,7 +32,7 @@ get "/ical/:year/:month/:day/*" do
     splat = params['splat'][0].split("/")
     p.days_in_cycle = splat[0].to_i
     if splat.size == 2
-      p.lutheal = splat[1].to_i
+      p.luteal = splat[1].to_i
     end
   end
   p.create_ical
