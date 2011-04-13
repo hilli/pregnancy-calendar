@@ -20,34 +20,27 @@
     Just enter the following details to let a calendar be generated for you:<br/>
   </section>
   <section id="details">
-    <form method="post">
+    <form id="form" method="get" action="<%= url('/post') %>">
       <fieldset id="period_infomation">
         <legend>Information about your last <span class="bolder">full</span> menstrual period</legend>
-            <div type="text" id="datepicker"></div>
-
-            <label for="day">Day:</label>
-            <input type="text" autofocus name="day" id="name" size="2" placeholder="<%= Time.now.day %>"/>
-
-            <label for="month">Month:</label>
-            <input type="text" name="month" id="month" size="2" placeholder="<%= Time.now.month %>"/>
-
-            <label for="year">Year:</label>
-            <input type="text" name="year" id="year" size="4" placeholder="<%= Time.now.year %>"/>
+            <label for="datepicker">First day of period:</label>
+            <div id="datepicker"></div>
       </fieldset>
       <fieldset id="pregnancy_information">
-        <legend>Optional information</legend>
-            <label for="days_in_cycle" title="Somewhere between 22 and 45 days">Days in your menstrual cycle</label>
-            <div type="text" id="days_in_cycle"></div>
-
-
-             <input type="range" min="22" max="45" value="28" size="2" onchange="showRangeValue(this.value, 'rangeDisplay')"/>
-                <span id="rangeDisplay" onload="showIfSupported('rangeDisplay');">28</span>
+        <legend>Bonus information (The shown values are the standard used ones)</legend>
+            <label for="days_in_cycle" title="Somewhere between 22 and 45 days">Days in your menstrual cycle: <span id="rangeDisplay">28</span></label>
+            <div id="days_in_cycle"></div> <br/>
+            <label for="luteal_phase" title="The number of day from ovulation to the beginning of a new period">Length of luteal phase: <span id="lutealDisplay">14</span></label>
+              <div id="luteal_phase"></div>
       </fieldset>
+      <input type="submit" name="Submit" value="Give me a calendar!"/>
     </form>
-  </section>
+    <div id="result">
 
-<a href="http://www.google.com/calendar/render?cid=<%= CGI::escape(url('/ical/2011/02/18/28/10')) %>"
-   target="_blank"><img src="http://www.google.com/calendar/images/ext/gc_button6.gif" border=0></a>
+      <a href="http://www.google.com/calendar/render?cid=<%= CGI::escape(url('/ical/2011/02/18/28/10')) %>"
+         target="_blank"><img src="http://www.google.com/calendar/images/ext/gc_button6.gif" border=0></a>
+    </div>
+  </section>
 
 </body>
 </html>

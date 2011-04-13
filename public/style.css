@@ -17,3 +17,8 @@ header#page_header {
 .bolder {
     font-weight: bolder;
 }
+
+.ui-slider-horizontal {
+    width: 320px;
+    height: 8px;
+}

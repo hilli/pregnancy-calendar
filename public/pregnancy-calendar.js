@@ -20,6 +20,7 @@ function showRangeValue(newValue, displaytag) {
 
 $(document).ready(function() {
     $("#datepicker").datepicker();
+
     $("#days_in_cycle").slider({
         value: 28,
         max: 45,
@@ -28,4 +29,19 @@ $(document).ready(function() {
             document.getElementById("rangeDisplay").innerHTML = ui.value;
         }
     });
+
+    $("#luteal_phase").slider({
+        value: 14,
+        max: 16,
+        min: 9,
+        slide: function(event, ui) {
+            document.getElementById("lutealDisplay").innerHTML = ui.value;
+        }
+    });
+
+    $("form").submit(function() {
+            dato = $("#datepicker").value;
+            luteal_period = $("#luteal_phase").value;
+            $.post("/post", { date: dato, luteal: luteal_period  })
+            });
 });
