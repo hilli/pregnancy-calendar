@@ -18,10 +18,6 @@ get "/" do
   erb :index
 end
 
-get "/post" do
-  params.to_s
-end
-
 get "/ical/:year/:month/:day/*" do
   content_type :ics
   printdate = sprintf("%4d%02d%02d",params[:year],params[:month],params[:day])
