@@ -1,11 +1,15 @@
 body {
-    width: 960px;
+    width: 560px;
     margin: 15px auto;
     font-family: Arial, "MS Trebuchet", sans-serif;
 }
 
 p {
     margin: 0 0 20px 0;
+}
+
+section#details {
+    width: 400px;
 }
 
 header#page_header {
