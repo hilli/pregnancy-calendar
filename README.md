@@ -7,12 +7,12 @@ link to add the calendar to the users Google Calendar.
 
 # Running example
 
-[http://pregnancy-calendar.heroku.com/](http://pregnancy-calendar.heroku.com/)
+[http://pregnancy-calendar.herokuapp.com/](http://pregnancy-calendar.herokuapp.com/)
 
 # TODO
 
-Given the expected date of birth, ie given from doctors, present the same
-calendar.
+* Given only the expected date of birth, ie given from doctors, present the same calendar.
+* Present some details to the user about what to expect and details about the fetus.
 
 # License
 
